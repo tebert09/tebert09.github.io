@@ -8,8 +8,44 @@
 <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
-	<div id="map"></div>
-	<h1>Hello</h1>
+	<header>
+		<div class="logo">
+			<h1>TELP</h1>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="#">Feed</a></li>
+				<li><a href="#">Search</a></li>
+				<li><a href="#">Favorites</a></li>
+				<li><a href="#">Profile</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div class="full-width">
+			<div id="map"></div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12"><h2>Filter by:</h2></div>
+				<div class="col-12 col-sm-4">Food Type</div>
+				<div class="col-12 col-sm-4">Experience</div>
+				<div class="col-12 col-sm-4">Rating</div>
+				<div class="col-12 col-sm-4">
+					<div class="restaurant">
+						<div class="rest-image"></div>
+						<div class="rest-info"></div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-4"></div>
+				<div class="col-12 col-sm-4">
+					<h2>Favorites</h2>
+				</div>
+			</div>
+		</div>
+		
+	</main>
+	
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/main.js"></script>
 	<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcZnsirdshHCrsU50veFO0nNLcNNUDFMw&callback=initMap"></script>
