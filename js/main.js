@@ -19,88 +19,113 @@ function initMap() {
     });
 }
 
-[
- {
-   "Name": "56 Brewery",
-   "Address": "3055 NE Columbia Ave Suite 102, Minneapolis, MN 55418",
-   "Food Type": "Brewery",
-   "Rating": 4
+
+var breweryList = {
+ fiveSix: {
+   name: "56 Brewery",
+   address: "3055 NE Columbia Ave Suite 102, Minneapolis, MN 55418",
+   type: "Brewery",
+   rating: 4
  },
- {
-   "Name": "612 Brew",
-   "Address": "945 Broadway St NE, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 4
+ sixOneTwo: {
+   name: "612 Brew",
+   address: "945 Broadway St NE, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 4
  },
- {
-   "Name": "Able Brewery",
-   "Address": "1121 Quincy St NE, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 5
+ able: {
+   name: "Able Brewery",
+   address: "1121 Quincy St NE, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 5
  },
- {
-   "Name": "Bauhaus Brewery",
-   "Address": "1315 Tyler St NE, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 3
+ bauhaus: {
+   name: "Bauhaus Brewery",
+   address: "1315 Tyler St NE, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 3
  },
- {
-   "Name": "Dangerous Man",
-   "Address": "1300 NE 2nd St, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 5
+ dangerousMan: {
+   name: "Dangerous Man",
+   address: "1300 NE 2nd St, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 5
  },
- {
-   "Name": "Fair State Brewery",
-   "Address": "2506 Central Ave NE, Minneapolis, MN 55418",
-   "Food Type": "Brewery",
-   "Rating": 4
+ fairState: {
+   name: "Fair State Brewery",
+   address: "2506 Central Ave NE, Minneapolis, MN 55418",
+   type: "Brewery",
+   rating: 4
  },
- {
-   "Name": "HeadFlyer Brewery",
-   "Address": "861 E Hennepin Ave, Minneapolis, MN 55414",
-   "Food Type": "Brewery",
-   "Rating": 3
+ headFlyer: {
+   name: "HeadFlyer Brewery",
+   address: "861 E Hennepin Ave, Minneapolis, MN 55414",
+   type: "Brewery",
+   rating: 3
  },
- {
-   "Name": "Indeed Brewery",
-   "Address": "711 NE 15th Ave, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 4
+ indeed: {
+   name: "Indeed Brewery",
+    address: "711 NE 15th Ave, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 4
  },
- {
-   "Name": "Insight Brewing",
-   "Address": "2821 E Hennepin Ave, Minneapolis, MN 55413",
-   "Food Type": "Brewery",
-   "Rating": 3
+ insight: {
+   name: "Insight Brewing",
+   address: "2821 E Hennepin Ave, Minneapolis, MN 55413",
+   type: "Brewery",
+   rating: 3
  },
- {
-   "Name": "Norseman Distillery",
-   "Address": "451 Taft St NE, Minneapolis, MN 55413",
-   "Food Type": "Distillery",
-   "Rating": 4
+ norseman: {
+   name: "Norseman Distillery",
+   address: "451 Taft St NE, Minneapolis, MN 55413",
+   type: "Distillery",
+   rating: 4
  },
- {
-   "Name": "Sociable Cider Werks",
-   "Address": "1500 Fillmore St NE, Minneapolis, MN 55413",
-   "Food Type": "Cider ",
-   "Rating": 5
- },
- {
-   "Name": "Tattersall Distilling",
-   "Address": "1620 Central Ave NE #150, Minneapolis, MN 55413",
-   "Food Type": "Distillery",
-   "Rating": 3
+ sociableCider: {
+   name: "Sociable Cider Werks",
+   address: "1500 Fillmore St NE, Minneapolis, MN 55413",
+   type: "Cider ",
+   rating: 5
  }
-]
+}
+
+// take breweryList object, convert to HTML
+// properties go into rest-info div
+
+
+function Brewery(name, address, type, rating) {
+    this.name = name; 
+    this.address = address; 
+    this.type = type; 
+    this.rating = rating; 
+}
+
+var tattersall = new Brewery('Tattersall Distilling', '1620 Central Ave NE #150, Minneapolis, MN 55413', 'Distillery', 3);
+
+// create new breweries
+// take values from input and put inside HTML
+// use mustache
+$('form').on('submit', function(e) {
+  e.preventDefault();
+
+  var userInput = {
+    name: $('#name').val(), 
+    address: $('#address').val(),
+    type: $('#type').val(), 
+    rating: $('#rating').val()
+  }
+
+  var source = $("#brewery").html();
+  var template = Handlebars.compile(source);
+  var newListItemHTML = template(userInput); 
+
+  $('.rest-info').append(newListItemHTML);
+});
+
 
 /////// Search 
 // as user searches, restaurants filter below
 // restaurants animate in a quick, scramble fashion
-
-
-/////// Filters
-// not for this project
 
 
 /////// Favorites
@@ -124,7 +149,6 @@ function initMap() {
 // each restaurant is an object 
 
 /////// Questions
-// How detailed of a site?
 // What other JS requirements? (object, DOM manipulation, API/Firebase, GIT)
 // think about data structure in firebase (users, ratings, )
 // keep in mind what needs to be grouped together.
