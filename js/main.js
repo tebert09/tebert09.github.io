@@ -19,6 +19,81 @@ function initMap() {
     });
 }
 
+[
+ {
+   "Name": "56 Brewery",
+   "Address": "3055 NE Columbia Ave Suite 102, Minneapolis, MN 55418",
+   "Food Type": "Brewery",
+   "Rating": 4
+ },
+ {
+   "Name": "612 Brew",
+   "Address": "945 Broadway St NE, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 4
+ },
+ {
+   "Name": "Able Brewery",
+   "Address": "1121 Quincy St NE, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 5
+ },
+ {
+   "Name": "Bauhaus Brewery",
+   "Address": "1315 Tyler St NE, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 3
+ },
+ {
+   "Name": "Dangerous Man",
+   "Address": "1300 NE 2nd St, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 5
+ },
+ {
+   "Name": "Fair State Brewery",
+   "Address": "2506 Central Ave NE, Minneapolis, MN 55418",
+   "Food Type": "Brewery",
+   "Rating": 4
+ },
+ {
+   "Name": "HeadFlyer Brewery",
+   "Address": "861 E Hennepin Ave, Minneapolis, MN 55414",
+   "Food Type": "Brewery",
+   "Rating": 3
+ },
+ {
+   "Name": "Indeed Brewery",
+   "Address": "711 NE 15th Ave, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 4
+ },
+ {
+   "Name": "Insight Brewing",
+   "Address": "2821 E Hennepin Ave, Minneapolis, MN 55413",
+   "Food Type": "Brewery",
+   "Rating": 3
+ },
+ {
+   "Name": "Norseman Distillery",
+   "Address": "451 Taft St NE, Minneapolis, MN 55413",
+   "Food Type": "Distillery",
+   "Rating": 4
+ },
+ {
+   "Name": "Sociable Cider Werks",
+   "Address": "1500 Fillmore St NE, Minneapolis, MN 55413",
+   "Food Type": "Cider ",
+   "Rating": 5
+ },
+ {
+   "Name": "Tattersall Distilling",
+   "Address": "1620 Central Ave NE #150, Minneapolis, MN 55413",
+   "Food Type": "Distillery",
+   "Rating": 3
+ }
+]
+
 /////// Search 
 // as user searches, restaurants filter below
 // restaurants animate in a quick, scramble fashion
