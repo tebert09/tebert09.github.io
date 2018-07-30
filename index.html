@@ -28,26 +28,29 @@
 		<div class="container">
 			<div class="row">
 				<div class="restaurants">						
-					<div class="rest-info">
+					<div id="listAddition">
 							<script type="text/x-handlebars-template" id="brewery">
-			{{name}}<br>{{address}}<br>{{type}}<br>{{rating}}
-		</script>
+								<div class="rest-info">
+								<h3>{{name}}</h3>
+								<div class="address">{{address}}</div>
+								<div class="type">{{type}}</div>
+								<div class="rating">{{rating}}</div>
+								</div>
+							</script>
 					</div>					
-				</div>
-
-				<div class="col-12 col-sm-4">
-					<h2>Favorites</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-12">
+				<div class="add-brewery">
+					<h2>Have a brewery to add?</h2>
+					<p>Help us keep our brewery list up to date!</p>
 					<div id="new-brewery">
 						<form action="">
 							<input id="name" type="text" placeholder="Brewery Name">
 							<input id="address" type="text" placeholder="Address">
 							<input id="type" type="text" placeholder="Type of place">
 							<input id="rating" type="text" placeholder="What rating do you give it?">
-							<button type="submit">Add new brewery to the list</button>
+							<button type="submit">Add new brewery</button>
 						</form>
 					</div>
 				</div>
@@ -55,7 +58,7 @@
 		</div>
 		
 	</main>
-	
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/handlebars-v4.0.5.js"></script>
 	<script src="js/main.js"></script>

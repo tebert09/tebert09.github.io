@@ -120,14 +120,28 @@ var breweries = [
 // add divs around each property
 $(function() {
   for (var i = 0; i < breweries.length; i++) {
-    var txt1 = '<div class="name">' + breweries[i].name + '</div>';
+    var txt1 = '<h3>' + breweries[i].name + '</h3>';
     var txt2 = '<div class="address">' + breweries[i].address + '</div>';
-    var txt3= '<div class="type">' + breweries[i].type + '</div>';
-    var txt4= '<div class="rating">' + breweries[i].rating + '</div>';
+    var txt3 = '<div class="type">' + breweries[i].type + '</div>';
+    var txt4 = '<div class="rating">' + breweries[i].rating + '</div>';
     $('.restaurants').append('<div class="rest-info">' + txt1 + txt2 + txt3 + txt4 + '</div>');
   }
 });
 
+//Firebase
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyA5KMrMHk595d0d0G0ceSgEUVuTFLbDRrY",
+    authDomain: "telp-d15c4.firebaseapp.com",
+    databaseURL: "https://telp-d15c4.firebaseio.com",
+    projectId: "telp-d15c4",
+    storageBucket: "",
+    messagingSenderId: "794102786107"
+};
+firebase.initializeApp(config);
+
+// Connect to Database
+var database = firebase.database();
 
 
 // create new breweries from user submitted form
@@ -143,26 +157,58 @@ $('form').on('submit', function(e) {
     rating: $('#rating').val()
   }
 
+  //get HTML from handlebars template
   var source = $("#brewery").html();
+  // compile handlebars
   var template = Handlebars.compile(source);
+  //pass data for new brewery into the template
   var newListItemHTML = template(userInput); 
 
-  $('.rest-info').append(newListItemHTML);
+  $('#listAddition').append(newListItemHTML);
+  $('input').val('');
+
+  // store the user's brewery in firebase
+  var newBrew = database.ref('breweryLocation');
+  newBrew.push({
+    brewery: userInput
+  });
 });
 
-
-
-
-
-
-
-
-
+//create a function that queries the database for brewery additions
+function getBrewery () {
+    //listen for changes in brewery data
+    database.ref('breweryLocation').on('value', function(results){
+        // store breweries in the results we received from Firebase
+        var allBreweries = results.val();
+        // set empty array to add all breweries we'll append to DOM
+        var userBreweries = [];
+        // loop through all breweries coming from database call
+        for (var item in allBreweries) {
+            // create object literal with data to pass through handlebars
+            var userInput = {
+                name: $('#name').val(), 
+                address: $('#address').val(),
+                type: $('#type').val(), 
+                rating: $('#rating').val()
+            }
+            //get HTML from handlebars template
+            var source = $("#brewery").html();
+            // compile handlebars
+            var template = Handlebars.compile(source);
+            //pass data for new brewery into the template
+            var newListItemHTML = template(userInput); 
+            // push newly created element to brewery array
+            userBreweries.push(newListItemHTML);
+        }
+    });
+}
+// on page load, bring in all breweries
+getBrewery();
 
 /////// Questions
 // how do I get these new breweries to stay on the page? 
-// why can't I put HTML inside the handlebars template?
 // how to create new map markers from objects and user submissions
+// doing a handlebars template for something that doesn't get submitted?
 
 
 
