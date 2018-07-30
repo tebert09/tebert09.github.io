@@ -1,23 +1,4 @@
-//////// Google Map = API
-// on page load, google maps shows user's location
-// if location services off, map shows minneapolis
-// map should zoom, have markers of restaurants
 
-function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 44.946017,
-            lng: -93.300276
-        },
-        zoom: 10,
-        zoomControl: true,
-        mapTypeControl: true,
-        scaleControl: true,
-        streetViewControl: true,
-        rotateControl: true,
-        fullscreenControl: true
-    });
-}
 
 
 var breweryList = {
@@ -89,19 +70,22 @@ var breweryList = {
  }
 }
 
+$('.restaurant').html('<div>Hello</div>');
+
 // take breweryList object, convert to HTML
 // properties go into rest-info div
 
 
-function Brewery(name, address, type, rating) {
-    this.name = name; 
-    this.address = address; 
-    this.type = type; 
-    this.rating = rating; 
-}
+// function Brewery(name, address, type, rating) {
+//     this.name = name; 
+//     this.address = address; 
+//     this.type = type; 
+//     this.rating = rating; 
+// }
 
-var tattersall = new Brewery('Tattersall Distilling', '1620 Central Ave NE #150, Minneapolis, MN 55413', 'Distillery', 3);
+// var tattersall = new Brewery('Tattersall Distilling', '1620 Central Ave NE #150, Minneapolis, MN 55413', 'Distillery', 3);
 
+// updating the dom
 // create new breweries
 // take values from input and put inside HTML
 // use mustache
@@ -122,6 +106,7 @@ $('form').on('submit', function(e) {
   $('.rest-info').append(newListItemHTML);
 });
 
+// how do I get these new breweries to stay on the page? 
 
 /////// Search 
 // as user searches, restaurants filter below
@@ -148,7 +133,46 @@ $('form').on('submit', function(e) {
 /////// JS Object
 // each restaurant is an object 
 
+
+
+
+
+
+//////// Google Map = API
+// on page load, google maps shows user's location
+// if location services off, map shows minneapolis
+// map should zoom, have markers of restaurants
+
+
+
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 44.946017,
+            lng: -93.300276
+        },
+        zoom: 10,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        rotateControl: true,
+        fullscreenControl: true
+    });
+
+    var marker = new google.maps.Marker({
+          position: {lat: 45.006075, lng: -93.249174},
+          map: map,
+          title: 'Tattersall'
+        });
+
+}
+
+
 /////// Questions
 // What other JS requirements? (object, DOM manipulation, API/Firebase, GIT)
 // think about data structure in firebase (users, ratings, )
 // keep in mind what needs to be grouped together.
+
+
+
