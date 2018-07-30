@@ -57,8 +57,8 @@ var breweries = [
    lng: -93.251025
  },
  {
-   name: "Bauhaus Brewery",
-   address: "",
+   name: "Bauhaus Brew Labs",
+   address: "1315 Tyler St NE, Minneapolis, MN 55413",
    type: "Brewery",
    rating: 3, 
    lat: 45.001165, 
@@ -116,10 +116,10 @@ var breweries = [
 
 // take breweryList object, convert to HTML
 // properties go into rest-info div
-// for every object in the breweries array, loop through, and display name, address, type, and rating
-// add divs around each property
 $(function() {
+// for every object in the breweries array, loop through, and display name, address, type, and rating
   for (var i = 0; i < breweries.length; i++) {
+    // add divs around each property
     var txt1 = '<h3>' + breweries[i].name + '</h3>';
     var txt2 = '<div class="address">' + breweries[i].address + '</div>';
     var txt3 = '<div class="type">' + breweries[i].type + '</div>';
@@ -174,42 +174,14 @@ $('form').on('submit', function(e) {
   });
 });
 
-//create a function that queries the database for brewery additions
-function getBrewery () {
-    //listen for changes in brewery data
-    database.ref('breweryLocation').on('value', function(results){
-        // store breweries in the results we received from Firebase
-        var allBreweries = results.val();
-        // set empty array to add all breweries we'll append to DOM
-        var userBreweries = [];
-        // loop through all breweries coming from database call
-        for (var item in allBreweries) {
-            // create object literal with data to pass through handlebars
-            var userInput = {
-                name: $('#name').val(), 
-                address: $('#address').val(),
-                type: $('#type').val(), 
-                rating: $('#rating').val()
-            }
-            //get HTML from handlebars template
-            var source = $("#brewery").html();
-            // compile handlebars
-            var template = Handlebars.compile(source);
-            //pass data for new brewery into the template
-            var newListItemHTML = template(userInput); 
-            // push newly created element to brewery array
-            userBreweries.push(newListItemHTML);
-        }
-    });
-}
-// on page load, bring in all breweries
-getBrewery();
+
 
 /////// Questions
 // how do I get these new breweries to stay on the page? 
 // how to create new map markers from objects and user submissions
 // doing a handlebars template for something that doesn't get submitted?
-
+// currently have two lists.. but maybe I shouldn't. Once firebase is working, should I just use that?
+// how do I keep Google API key on GIT without getting hacked? 
 
 
 ////// Need to have
