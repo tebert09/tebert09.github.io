@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 h1, h2, h3, h4 {
 	font-family: 'Permanent Marker', cursive;
 }
@@ -11,9 +14,14 @@ body {
 .row {
 	margin: 0 -15px;
 }
-.col-12 {
-	width: 100%;
+.col-12, .rest-info {
+	width: 99%;
 	float: left;
+}
+.rest-info {
+	padding: 15px; 
+	border: 3pt solid #1abac7;
+	margin: 10px;
 }
 #map {
 	width: 100%;
@@ -23,7 +31,7 @@ body {
 	.col-sm-6 {
 		width: 50%;
 	}
-	.col-sm-4 {
-		width: 33.3%;
+	.col-sm-4, .rest-info {
+		width: 32%;
 	}
 }
