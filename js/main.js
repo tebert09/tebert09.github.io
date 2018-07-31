@@ -1,17 +1,19 @@
 
 //////// Google Map = API
-// on page load, google maps current list of breweries with markers
+// on page load, google maps shows current list of breweries with markers
 // map should zoom
-// objects need lat, lng
-// as user adds new brewery, marker is created
 
-function initMap() {
+var locations = [
+    ['612 Brew', 44.999261, -93.246726, 2],
+    ['Indeed Brewery', 45.003504, -93.251146, 2],
+    ['Sociable Cider Werks', 45.004698, -93.243990, 1]
+];
+
+function initMap() { 
+    var minneapolis = {lat: 44.988862, lng: -93.250381}
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 44.946017,
-            lng: -93.300276
-        },
-        zoom: 10,
+        center: minneapolis,
+        zoom: 12,
         zoomControl: true,
         mapTypeControl: true,
         scaleControl: true,
@@ -20,11 +22,26 @@ function initMap() {
         fullscreenControl: true
     });
 
-    var marker = new google.maps.Marker({
-          position: {lat: 45.006075, lng: -93.249174},
-          map: map,
-          title: 'Tattersall'
-    });
+    var count;
+
+    for (count = 0; count < locations.length; count++) {  
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+            map: map
+        });
+
+        marker.info = new google.maps.InfoWindow({
+            content: locations [count][0]
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {  
+            // this = marker
+            var marker_map = this.getMap();
+            this.info.open(marker_map, this);
+            // Note: If you call open() without passing a marker, the InfoWindow will use the position specified upon construction through the InfoWindowOptions object literal.
+        });
+    }
 
 }
 
@@ -76,22 +93,18 @@ function getBreweries () {
 
         // store breweries in the results we received from Firebase
         var allBreweries = results.val();
-        //console.log(allBreweries);
 
-        // set empty array to add all breweries we'll append to DOM
-
-        $('.restaurants').empty();
+        //$('.restaurants').empty();
 
         // loop through all breweries coming from database call
-        for (var item in allBreweries) {
+        for (var brewery in allBreweries) {
             // create object literal with data to pass through handlebars
             var context = {
-                name: $('#name').val(), 
-                address: $('#address').val(),
-                type: $('#type').val(), 
-                rating: $('#rating').val()
+                name: allBreweries[brewery].name, 
+                address: allBreweries[brewery].address,
+                type: allBreweries[brewery].type, 
+                rating: allBreweries[brewery].rating
             }
-            console.log(context);
 
             //get HTML from handlebars template
             var source = $('#brewery-template').html();
@@ -106,20 +119,3 @@ function getBreweries () {
 }
 // on page load, bring in all breweries and when a new entry is added
 getBreweries();
-
-
-/////// Questions
-// Getting Firebase to save user adds
-// currently have two lists.. but maybe I shouldn't. Once firebase is working, should I just use that?
-    // how to creating new map markers from objects and user submissions
-
-
-
-////// Need to have
-// variables - done
-// object - done
-// API (google) - done
-// updating DOM (new brewery) - done
-// git - done
-// Firebase 
-// CRUD

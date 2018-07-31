@@ -30,19 +30,16 @@ body {
 }
 #map {
 	width: 100%;
-	height: 300px;
+	height: 500px;
 }
 input {
 	border: 0;
 	width: 18%;
-	   height: 30px;
+	height: 30px;
     padding: 5px;
 }
-@media (min-width: 768px) {
-	.col-sm-6 {
-		width: 50%;
-	}
+@media (min-width: 992px) {
 	.col-sm-4, .rest-info {
-		width: 32%;
+		width: 30%;
 	}
 }
