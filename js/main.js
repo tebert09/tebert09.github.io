@@ -94,6 +94,7 @@ function getBreweries () {
         // store breweries in the results we received from Firebase
         var allBreweries = results.val();
 
+        // if I have this code uncommented, none of the items shows up. But when a user submits a new brewery, the list duplicates.
         //$('.restaurants').empty();
 
         // loop through all breweries coming from database call
