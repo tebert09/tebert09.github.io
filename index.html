@@ -8,19 +8,7 @@
 <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
-	<header>
-		<div class="logo">
-			<h1>TELP</h1>
-		</div>
-		<!--<nav>
-			<ul>
-				<li><a href="#">Feed</a></li>
-				<li><a href="#">Search</a></li>
-				<li><a href="#">Favorites</a></li>
-				<li><a href="#">Profile</a></li>
-			</ul>
-		</nav>-->
-	</header>
+
 	<main>
 		<div class="full-width">
 			<div id="map"></div>
@@ -28,16 +16,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="restaurants">						
-					<div id="listAddition">
-							<script type="text/x-handlebars-template" id="brewery">
-								<div class="rest-info">
-								<h3>{{name}}</h3>
-								<div class="address">{{address}}</div>
-								<div class="type">{{type}}</div>
-								<div class="rating">{{rating}}</div>
-								</div>
-							</script>
-					</div>					
+
+				<script id="brewery-template" type="text/x-handlebars-template">
+					<div class="rest-info">
+						<h3>{{name}}</h3>
+						<div class="address">{{address}}</div>
+						<div class="type">{{type}}</div>
+						<div class="rating">{{rating}}</div>
+					</div>
+				</script>
+									
 				</div>
 			</div>
 			<div class="row">
@@ -58,7 +46,7 @@
 		</div>
 		
 	</main>
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/handlebars-v4.0.5.js"></script>
 	<script src="js/main.js"></script>
