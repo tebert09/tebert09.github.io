@@ -16,8 +16,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="restaurants">						
+]					<!-- This is where the new breweries are added -->
+				</div>
 
 				<script id="brewery-template" type="text/x-handlebars-template">
+					<!-- handlebars templates can go anywhere inside the body, but not in the div that content is being added to -->
 					<div class="rest-info">
 						<h3>{{name}}</h3>
 						<div class="address">{{address}}</div>
@@ -25,8 +28,6 @@
 						<div class="rating">{{rating}}</div>
 					</div>
 				</script>
-									
-				</div>
 			</div>
 			<div class="row">
 				<div class="add-brewery">

@@ -77,6 +77,9 @@ $('form').on('submit', function(e) {
         rating: $('#rating').val()
     }
 
+    // this code just adds the newest brewery to restaurants div
+    $('.restaurants').empty();
+
     // clear form after submitting
     $('input').val('');
 
@@ -93,9 +96,6 @@ function getBreweries () {
 
         // store breweries in the results we received from Firebase
         var allBreweries = results.val();
-
-        // if I have this code uncommented, none of the items shows up. But when a user submits a new brewery, the list duplicates.
-        //$('.restaurants').empty();
 
         // loop through all breweries coming from database call
         for (var brewery in allBreweries) {
